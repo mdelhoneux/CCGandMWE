@@ -1,13 +1,56 @@
-This file contains code for the project:
+This file contains
+1. Running instructions for the following project to allow reproduction of our results:
 de Lhoneux, M. (2014). CCG Parsing and Multiword Expressions. Master's thesis, University of Edinburgh.
-A file inventory with a small description of each program we created for the project as well
+2. A file inventory with a small description of each program we created for the project as well
 as a few files we modified for the project
-
 =======================================================================================================
-1. FILE INVENTORY
+1. PROJECT PIPELINE
+=======================================================================================================
+#######################################################################################################
+PREREQUISITES
+All our code should be kept in the directory structure given
+So that the full experimentation runs, the following libraries need to be compiled in a lib
+directory:
+*candc (downloadable under license at http://svn.ask.it.usyd.edu.au/trac/candc/wiki)
+*StatOpenCCG (downloadable at http://christos-c.com/statopenccg/)
+#######################################################################################################
+-------------------------------------------------------------------------------------------------------
+1.1 DATA PREPARATION
+-------------------------------------------------------------------------------------------------------
+Make an unlabeled version of CCGbank with sentence IDs and tree leaves
+$python $CODE/CCG_MWE_process/ccgbank_to_raw.py OUTDIR
+Initialise the baseline model
+$ ./init_modelA modelA_directory code_directory resultfile
+compile java files
+$javac -cp "lib/*":./ -d bin ilcc/ccg/utils/Auto2Parg.java
+$java -cp "bin:lib/*" ilcc.ccg.utils.Auto2Parg infile outfile
+-------------------------------------------------------------------------------------------------------
+1.2/ MWE Recognition
+-------------------------------------------------------------------------------------------------------
+cd mwe_recognizer/src
+$java -cp lib/*:. MWERecognizer.java
+$java -cp lib/*:. MWERecognizer MWEDIR CCGbank_raw
+
+## Note: we have not parametrised the recognizer, to reproduce our experiments, see our descriptions
+# and read the jMWE manual guide
+-------------------------------------------------------------------------------------------------------
+1.3/ Running an experiment
+./experiment.sh MWEDIR modeBdir modelAdir recognizer_id codedir libdir CCGbankdir csv_results_file
+
+Note: recognizer id and modelBdir can be anything but the easiest is to name them after the MWEdir
+# to run only parts of the pipeline:
+# see commented commands in experiment.sh
+Note: to evaluate and get the files needed for statistical significance testing, run the following
+after an experiment
+./eval_for_stats.sh MWEDIR modeBdir recognizer_id  CodeDir modelAdir
+This will create the relevant files in the relevant directories, all that is needed next
+is to use a stats software such as http://www.nlpado.de/~sebastian/software/sigf.shtml to compare
+the models
+=======================================================================================================
+2. FILE INVENTORY
 =======================================================================================================
 
-1.1 mwe_recognizer
+2.1 mwe_recognizer
 #######################################################################################################
 prerequisites:
 *the libraries jMWE (http://projects.csail.mit.edu/jmwe/) and the stanford-postagger in lib/
@@ -36,7 +79,7 @@ MWERecognizer.java
 	change. In the meantime, commented lines show other possibilities
 	
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-1.2 CCGandMWE
+2.2 CCGandMWE
 #######################################################################################################
 prerequisites:
 NLTK and python 2.6
