@@ -1,6 +1,7 @@
 ﻿This file contains code created for the following project:
 de Lhoneux, M. (2014). CCG Parsing and Multiword Expressions. Master's thesis, University of Edinburgh.
-A file inventory with a small description of each program we created for the project as well as a few files we modified for the project
+A file inventory with a small description of each program we created for the project as well as a few 
+files we modified for the project
 
 ===========================================================================================
 1. FILE INVENTORY
@@ -30,9 +31,9 @@ MWERecognizer.java
 	mr._vinken, elsevier_.n.v.
 	----------------------------------------------------------------------
 	Note:
-	The recognizer runs with the detector that performed best with our project: the one
-	that only detects Proper Nouns. It was difficult to parametrize but it is an intended future 
-	change. In the meantime, commented lines show other possibilities
+	The recognizer runs with the detector that performed best with our project: the one that only detects 
+	Proper Nouns. It was difficult to parametrize but it is an intended future change. In the meantime, 
+	commented lines show other possibilities
 	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 1.2 CCGandMWE
