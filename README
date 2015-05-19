@@ -1,6 +1,6 @@
 ﻿This file contains code created for the following project:
 de Lhoneux, M. (2014). CCG Parsing and Multiword Expressions. Master's thesis, University of Edinburgh.
-[pdf avalailable for download at http://mdelhoneux.github.io/de_Lhoneux_thesis.pdf]
+[pdf avalailable for download at http://arxiv.org/pdf/1505.04420v1.pdf]
 A file inventory with a small description of each program we created for the project as well as a few files we modified for the project
 
 [DISCLAIMER: I wrote this code when I was still a relatively newbie programmer (1 year after my HelloWorld birth). Although I'm not completely ashamed of the code itself, in terms of project management, describing it as chaos would be making an understatement. There is only one folder containing both the scripting and the source code which are themselves sometimes even mixed in the same file. Refactoring the project is somewhere on my TODO list but might never happen.]
